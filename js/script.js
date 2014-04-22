@@ -12,7 +12,9 @@ var altTurn = function() {
   }
     turnNum += 1;
   };
+// var exclusiveNum = function () {
 
+// }
 function TicTacController($scope) {
   $scope.rows = [['a','b','c','d','e','f','g','h'],['j','k','l','m','n','o','p','q'],['s','t','u','v','w','x','y','z']];
   gameTimer(40);
@@ -27,70 +29,71 @@ function TicTacController($scope) {
     var c4 = 0; var c5 = 1; var c6 = 2;
     var c7 = 0; var c8 = 1; var c9 = 2;
     var c10 = 0;
-    var dr1 = 0; dr2 = 1; dr3 = 2;
-    var dc1 = 0; dc2 = 1; dc3 = 2;
-    var dc4 = 0; dc5 = 1; dc6 = 2;
+    var dr1 = 0; var dr2 = 1; var dr3 = 2;
+    var dc1 = 0; var dc2 = 1; var dc3 = 2;
+    var dc4 = 0; var dc5 = 1; var dc6 = 2;
+    var p1s = 100; var p2s = -100;
 
     // first chunk of code checks all possible horizontal scores
     for (x = 0; x < 12; x++) {
-      if (baseBox[r1][c1] + baseBox[r1][c2] + $scope.rows[r1][c3] == 3) {
-        console.log('p1!');
+      if (baseBox[r1][c1] + baseBox[r1][c2] + baseBox[r1][c3] == 3) {
+        console.log(p1s);
       }
-      else if (baseBox[r1][c1] + baseBox[r1][c2] + $scope.rows[r1][c3] == -3) {
-        console.log('p2!');
+      else if (baseBox[r1][c1] + baseBox[r1][c2] + baseBox[r1][c3] == -3) {
+        console.log(p2s);
       }
-      c1 += 1; c2 += 1; c3 += 1; x += 1;
+      c1 += 1; c2 += 1; c3 += 1; x += 1; p1s += 1; p2s -= 1;
     }
     for (s = 0; s < 12; s++) {
-      if (baseBox[r2][c4] + baseBox[r2][c5] + $scope.rows[r2][c6] == 3) {
-        console.log('p1!');
+      if (baseBox[r2][c4] + baseBox[r2][c5] + baseBox[r2][c6] == 3) {
+        console.log(p1s);
       }
-      else if (baseBox[r2][c4] + baseBox[r2][c5] + $scope.rows[r2][c6] == -3) {
-        console.log('p2!');
+      else if (baseBox[r2][c4] + baseBox[r2][c5] + baseBox[r2][c6] == -3) {
+        console.log(p2s);
       }
-      c4 += 1; c5 += 1; c6 += 1; s += 1;
+      c4 += 1; c5 += 1; c6 += 1; s += 1; p1s += 1; p2s -= 1;
     }
     for (t = 0; t < 12; t++) {
-      if (baseBox[r3][c7] + baseBox[r3][c8] + $scope.rows[r3][c9] == 3) {
-        console.log('p1!');
+      if (baseBox[r3][c7] + baseBox[r3][c8] + baseBox[r3][c9] == 3) {
+        console.log(p1s);
       }
-      else if (baseBox[r3][c7] + baseBox[r3][c8] + $scope.rows[r3][c9] == -3) {
-        console.log('p2!');
+      else if (baseBox[r3][c7] + baseBox[r3][c8] + baseBox[r3][c9] == -3) {
+        console.log(p2s);
       }
-      c7 += 1; c8 += 1; c9 += 1; t += 1;
+      c7 += 1; c8 += 1; c9 += 1; t += 1; p1s += 1; p2s -= 1;
     }
     //--------------------------------------
     // beginning of vertical score checking
     for (w = 0; w < 18; w++) {
-      if (baseBox[r1][c10] + baseBox[r2][c10] + $scope.rows[r3][c10] == 3) {
-        console.log('p1!');
+      if (baseBox[r1][c10] + baseBox[r2][c10] + baseBox[r3][c10] == 3) {
+        console.log(p1s);
       }
-      else if (baseBox[r1][c10] + baseBox[r2][c10] + $scope.rows[r3][c10] == -3) {
-        console.log('p2!');
+      else if (baseBox[r1][c10] + baseBox[r2][c10] + baseBox[r3][c10] == -3) {
+        console.log(p2s);
       }
-      c10 += 1; w += 1;
+      c10 += 1; w += 1; p1s += 1; p2s -= 1;
     }
     //--------------------------------------
     // beginning of diagonal-down score checking
     for (q = 0; q < 18; q++) {
-      if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + $scope.rows[dr3][dc3] == 3) {
-        console.log('p1!');
+      if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + baseBox[dr3][dc3] == 3) {
+        console.log(p1s);
       }
-      else if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + $scope.rows[dr3][dc3] == -3) {
-        console.log('p2!');
+      else if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + baseBox[dr3][dc3] == -3) {
+        console.log(p2s);
       }
-      dc1 += 1; dc2 += 1; dc3 += 1; q += 1;
+      dc1 += 1; dc2 += 1; dc3 += 1; q += 1; p1s += 1; p2s -= 1;
     }
     //-----------------------------------------
     // beginning of diagonal-up score checking
     for (u = 0; u < 18; u++) {
-      if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + $scope.rows[dr1][dc6] == 3) {
-        console.log('p1!');
+      if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + baseBox[dr1][dc6] == 3) {
+        console.log(p1s);
       }
-      else if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + $scope.rows[dr1][dc6] == -3) {
-        console.log('p2!');
+      else if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + baseBox[dr1][dc6] == -3) {
+        console.log(p2s);
       }
-      dc4 += 1; dc5 += 1; dc6 += 1; u += 1;
+      dc4 += 1; dc5 += 1; dc6 += 1; u += 1; p1s += 1; p2s -= 1;
     }
     //-----------------------------------------
 

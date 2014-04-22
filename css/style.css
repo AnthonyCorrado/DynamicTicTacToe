@@ -1,5 +1,6 @@
 body {
-	background-image: url('../img/background.jpg');
+	background-color: black;
+	/*background-image: url('../img/background.jpg');*/
 	/*background-color: rgba(200, 200, 100, .5);*/	
 	width: 1800px;
 	position: fixed;
