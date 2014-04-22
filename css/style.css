@@ -1,0 +1,65 @@
+body {
+	background-image: url('../img/background.jpg');
+	/*background-color: rgba(200, 200, 100, .5);*/	
+	width: 1800px;
+	position: fixed;
+	color: white;
+	font
+}
+#container {
+	margin: 0 0 0 478px;
+	
+
+
+}
+#title {
+	margin-left: 580px;
+	position: relative;
+}
+#counter_text{
+	margin-left: 640px;
+	font-family: cursive;
+	font-size: 50px;
+}
+div div {
+
+	margin: 5px;
+	width: 100px;
+	height: 100px;
+    box-shadow: 4px 4px 15px lime;
+	border: 5px solid lime;
+	border-radius: 5px; 
+	/*background-color: rgba(0, 0, 200, .2);*/
+	text-align: center;
+	display: inline-block;
+	clear: both;
+
+}
+div .col {
+	clear: both;
+	color: white;
+	font-size: 30px;
+}
+.leftLayer {
+	width: 480px;
+	height: 600px;
+	margin: 0px;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(0, 0, 0, .8);
+	clear: both;
+	position: fixed;
+}
+.rightLayer {
+	width: 600px;
+	height: 600px;
+	margin:  0 0 0 840px;
+	z-index: 1000;
+	float: right;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(0, 0, 0, .8);
+	clear: both;
+	position: fixed;
+}
+

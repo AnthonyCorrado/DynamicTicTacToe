@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>TicTacToe</title>
+	<link href='http://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	<script src="js/script.js"></script>
+</head>
+<body x-ng-app="" x-ng-controller="TicTacController">
+	<div class="leftLayer">
+	</div>
+	<div class="rightLayer">
+	</div>
+
+		<h1 id="title">Tic Tac Toe</h1>
+		<h1 id="counter_text"></h1>
+		<div id="container" class="row2" x-ng-repeat="r in rows track by $index">
+			<div class="col" x-ng-repeat="col in r track by $index" x-ng-click="makeMove($parent.$index, $index);">
+				{{ col }}
+			</div>	
+		</div>
+
+	
+</body>
+</html>
