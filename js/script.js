@@ -61,6 +61,7 @@ function TicTacController($scope) {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
+
       }
       c4 += 1; c5 += 1; c6 += 1; s += 1; p1s += 1; p2s -= 1;
     }
@@ -126,6 +127,7 @@ function TicTacController($scope) {
     console.log(p1scoreId.length);
     $scope.p1Score = p1scoring.length;
     $scope.p2Score = p2scoring.length;
+
    
 };
 
@@ -184,12 +186,16 @@ function fairScoreTracker1(scoreId) {
   isThere = false;
   for (item = 0; item < p1scoring.length; item++) {
     if (scoreId == p1scoring[item]) {
+
       isThere=true;
       break;
     }
   }
-  if(!isThere)
+  if(!isThere) {
     p1scoring.push(p1scoreId);
+    scorePopup ('pointp1');
+    popupReset('pointp1');
+  }
 
 }
 function fairScoreTracker2(scoreId) {
@@ -200,8 +206,16 @@ function fairScoreTracker2(scoreId) {
       break;
     }
   }
-  if(!isThere)
+  if(!isThere) {
     p2scoring.push(p2scoreId);
-
+    scorePopup ('pointp2');
+    popupReset('pointp2');
+  }
+}
+function scorePopup (elementId) {
+  document.getElementById(elementId).style.display="block";
+}
+function popupReset(elementId) {
+    setTimeout(function() {document.getElementById(elementId).style.display="none";}, 2000);
 }
 

@@ -2,6 +2,7 @@
 <head>
 	<title>TicTacToe</title>
 	<link href='http://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
 	<script src="js/script.js"></script>
@@ -15,9 +16,11 @@
 
 		<div id="ScorePlayer2">{{p2Score}}</div>
 		<h1 id="title">Tic Tac Toe</h1>
+		<p id="pointp1">Player 1 Scores!</p>
+		<p id="pointp2">Player 2 Scores!</p>
 	</div>
 	<div class="leftLayer">
-
+		{{point1}}
 	</div>
 
 	<div class="rightLayer">
