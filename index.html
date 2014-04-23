@@ -7,18 +7,31 @@
 	<script src="js/script.js"></script>
 </head>
 <body x-ng-app="" x-ng-controller="TicTacController">
-	<div class="leftLayer">
+	<div id="topContainer">
+		<div id="p1Name">Player 1</div>
+		<div id="p2Name">Player 2</div>
+		<div id="ScorePlayer1">
+		{{p1Score}}</div>
+
+		<div id="ScorePlayer2">{{p2Score}}</div>
+		<h1 id="title">Tic Tac Toe</h1>
 	</div>
+	<div class="leftLayer">
+
+	</div>
+
 	<div class="rightLayer">
 	</div>
 
-		<h1 id="title">Tic Tac Toe</h1>
+		
 		<h1 id="counter_text"></h1>
+	<div id="boardContainer">
 		<div id="container" class="row2" x-ng-repeat="r in rows track by $index">
 			<div class="col" x-ng-repeat="col in r track by $index" x-ng-click="makeMove($parent.$index, $index);">
 				{{ col }}
 			</div>	
 		</div>
+	</div>
 
 	
 </body>

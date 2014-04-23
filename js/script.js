@@ -5,22 +5,22 @@ var p1scoreId = 0;
 var p2scoreId = 0;
 var p1scoring = [];
 var p2scoring = [];
+var p1scoreChange = 0;
 
 var altTurn = function() {
   if (turnNum % 2 ===0) {
-    mark = 1;
+    mark = "X";
   }
   else {
-    mark = -1;
+    mark = "O";
   }
     turnNum += 1;
   };
-// var exclusiveNum = function () {
 
-// }
 function TicTacController($scope) {
-  $scope.rows = [['a','b','c','d','e','f','g','h'],['j','k','l','m','n','o','p','q'],['s','t','u','v','w','x','y','z']];
+  $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
   gameTimer(40);
+
 
 // checkForScore uses a loop that will check each possible score
   var checkForScore = function() {
@@ -39,12 +39,12 @@ function TicTacController($scope) {
 
     // first chunk of code checks all possible horizontal scores
     for (x = 0; x < 12; x++) {
-      if (baseBox[r1][c1] + baseBox[r1][c2] + baseBox[r1][c3] == 3) {
+      if (baseBox[r1][c1] + baseBox[r1][c2] + baseBox[r1][c3] == "XXX") {
         console.log(p1s);
         p1scoreId = p1s;
         fairScoreTracker1(p1scoreId);
       }
-      else if (baseBox[r1][c1] + baseBox[r1][c2] + baseBox[r1][c3] == -3) {
+      else if (baseBox[r1][c1] + baseBox[r1][c2] + baseBox[r1][c3] == "OOO") {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
@@ -52,12 +52,12 @@ function TicTacController($scope) {
       c1 += 1; c2 += 1; c3 += 1; x += 1; p1s += 1; p2s -= 1;
     }
     for (s = 0; s < 12; s++) {
-      if (baseBox[r2][c4] + baseBox[r2][c5] + baseBox[r2][c6] == 3) {
+      if (baseBox[r2][c4] + baseBox[r2][c5] + baseBox[r2][c6] == "XXX") {
         console.log(p1s);
         p1scoreId = p1s;
         fairScoreTracker1(p1scoreId);
       }
-      else if (baseBox[r2][c4] + baseBox[r2][c5] + baseBox[r2][c6] == -3) {
+      else if (baseBox[r2][c4] + baseBox[r2][c5] + baseBox[r2][c6] == "OOO") {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
@@ -65,12 +65,12 @@ function TicTacController($scope) {
       c4 += 1; c5 += 1; c6 += 1; s += 1; p1s += 1; p2s -= 1;
     }
     for (t = 0; t < 12; t++) {
-      if (baseBox[r3][c7] + baseBox[r3][c8] + baseBox[r3][c9] == 3) {
+      if (baseBox[r3][c7] + baseBox[r3][c8] + baseBox[r3][c9] == "XXX") {
         console.log(p1s);
         p1scoreId = p1s;
         fairScoreTracker1(p1scoreId);
       }
-      else if (baseBox[r3][c7] + baseBox[r3][c8] + baseBox[r3][c9] == -3) {
+      else if (baseBox[r3][c7] + baseBox[r3][c8] + baseBox[r3][c9] == "OOO") {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
@@ -80,11 +80,12 @@ function TicTacController($scope) {
     //--------------------------------------
     // beginning of vertical score checking
     for (w = 0; w < 16; w++) {
-      if (baseBox[r1][c10] + baseBox[r2][c10] + baseBox[r3][c10] == 3) {
+      if (baseBox[r1][c10] + baseBox[r2][c10] + baseBox[r3][c10] == "XXX") {
         console.log(p1s);
         p1scoreId = p1s;
+        fairScoreTracker1(p1scoreId);
       }
-      else if (baseBox[r1][c10] + baseBox[r2][c10] + baseBox[r3][c10] == -3) {
+      else if (baseBox[r1][c10] + baseBox[r2][c10] + baseBox[r3][c10] == "OOO") {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
@@ -94,11 +95,12 @@ function TicTacController($scope) {
     //--------------------------------------
     // beginning of diagonal-down score checking
     for (q = 0; q < 12; q++) {
-      if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + baseBox[dr3][dc3] == 3) {
+      if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + baseBox[dr3][dc3] == "XXX") {
         console.log(p1s);
         p1scoreId = p1s;
+        fairScoreTracker1(p1scoreId);
       }
-      else if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + baseBox[dr3][dc3] == -3) {
+      else if (baseBox[dr1][dc1] + baseBox[dr2][dc2] + baseBox[dr3][dc3] == "OOO") {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
@@ -108,11 +110,12 @@ function TicTacController($scope) {
     //-----------------------------------------
     // beginning of diagonal-up score checking
     for (u = 0; u < 12; u++) {
-      if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + baseBox[dr1][dc6] == 3) {
+      if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + baseBox[dr1][dc6] == "XXX") {
         console.log(p1s);
         p1scoreId = p1s;
+        fairScoreTracker1(p1scoreId);
       }
-      else if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + baseBox[dr1][dc6] == -3) {
+      else if (baseBox[dr3][dc4] + baseBox[dr2][dc5] + baseBox[dr1][dc6] == "OOO") {
         console.log(p2s);
         p2scoreId = p2s;
         fairScoreTracker2(p2scoreId);
@@ -120,7 +123,9 @@ function TicTacController($scope) {
       dc4 += 1; dc5 += 1; dc6 += 1; u += 1; p1s += 1; p2s -= 1;
     }
     //-----------------------------------------
-
+    console.log(p1scoreId.length);
+    $scope.p1Score = p1scoring.length;
+    $scope.p2Score = p2scoring.length;
    
 };
 
@@ -133,7 +138,7 @@ function TicTacController($scope) {
     
     cell = $scope.rows[r][c];
     // console.log($scope.rows[c]);
-    if (cell != 1 && cell != -1) {
+    if (cell != "X" && cell != "O") {
       altTurn();
       $scope.rows[r][c] = mark;
     }
@@ -155,7 +160,7 @@ for (i=num;i>-1;i--) {
     window.setTimeout(function(counter)
     {
       var therows = document.getElementsByClassName("row2");
-          if (i < 31 && i % 5 === 0) {
+          if (i < 31 && i > 9 && i % 5 === 0) {
             for (var y = 0; y < therows.length; y++) {
               
               therows[y].style.marginLeft=moveBoard +"px";
@@ -199,3 +204,4 @@ function fairScoreTracker2(scoreId) {
     p2scoring.push(p2scoreId);
 
 }
+
