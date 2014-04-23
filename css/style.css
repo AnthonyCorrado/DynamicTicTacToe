@@ -24,7 +24,7 @@ body {
 }
 div div {
 
-	margin: 5px;
+	margin: 8px;
 	width: 100px;
 	height: 100px;
     box-shadow: 4px 4px 15px lime;
@@ -42,9 +42,9 @@ div .col {
 	font-size: 30px;
 }
 .leftLayer {
-	width: 480px;
+	width: 486px;
 	height: 600px;
-	margin: 0px;
+	margin: 0;
 	z-index: 1000;
 	float: left;
 	/*background-color: rgba(180, 180, 80, 1);*/
@@ -55,7 +55,7 @@ div .col {
 .rightLayer {
 	width: 600px;
 	height: 600px;
-	margin:  0 0 0 840px;
+	margin:  0 0 0 855px;
 	z-index: 1000;
 	float: right;
 	/*background-color: rgba(180, 180, 80, 1);*/
