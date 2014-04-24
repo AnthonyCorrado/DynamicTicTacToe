@@ -4,20 +4,17 @@ body {
 	/*background-color: rgba(200, 200, 100, .5);*/	
 	width: 1800px;
 	position: fixed;
-	color: #CCC;
+	color: #BBB;
 	margin: 0 auto;
 	font-family: 'Audiowide', 'cursive';
+	text-shadow: 0 2px 30px lime;
 }
-/*#boardContainer {
-	width: 1150px;
-	height: 390px;
-	border: 1px dotted white;
-}*/
+	
 #container {
 	margin: 0 0 0 478px;
-	height: 128px;
-	clear: 
+	height: 128px; 
 } 
+
 #title {
 	margin-left: 550px;
 	position: relative;
@@ -27,7 +24,7 @@ body {
 }
 #counter_text{
 	margin-left: 635px;
-	font-family: cursive;
+
 	font-size: 50px;
 }
 .col {
@@ -74,6 +71,88 @@ div .col {
 	background-color: rgba(0, 0, 0, .8);
 	clear: both;
 	position: fixed;
+}
+#winScreen1 {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(55,15,65,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#winText1 {
+	font-size: 50px;
+	padding: 4px;
+	margin: 600px 0 0 320px;
+	text-shadow: 0 0 10px purple;
+	background: rgba(35,10,40,.8);
+	display: none;
+}
+#winScreen2 {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(0,165,204,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#winText2 {
+	font-size: 50px;
+	padding: 4px;
+	margin: 600px 0 0 320px;
+	text-shadow: 0 0 10px blue;
+	background: rgba(0,70,100,.8);
+	display: none;
+}
+#tieScreen {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(150,20,20,.3);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#tieText {
+	font-size: 50px;
+	padding: 4px;
+	margin: 600px 0 0 320px;
+	text-shadow: 0 0 10px red;
+	display: inline-block;
+	background: rgba(40,0,0,.5);
+	display: none;
+}
+#startScreen {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(150,20,20,.3);
+	clear: both;
+	position: fixed;
+	display: block; 
+}
+#startText {
+	font-size: 50px;
+	padding: 4px;
+	margin: 600px 0 0 350px;
+	text-shadow: 0 0 10px red;
+	display: inline-block;
+	background: rgba(40,0,0,.5);
+	
 }
 /*#topContainer {
 	max-width: 70%;
@@ -143,6 +222,7 @@ div .col {
 	-webkit-animation-duration: 2s;
   	-webkit-animation-name: slidein;
   	
+  	
 }
 @-webkit-keyframes slidein {
   from {
@@ -155,6 +235,14 @@ div .col {
     width: 100%;
   }
 }
-
+@-webkit-keyframes fade-in{
+from{
+    opacity:0;
+    top:0px;
+}
+to{
+    opacity:1;
+    top:-5px;
+}
 
 

@@ -6,7 +6,7 @@ var p2scoreId = 0;
 var p1scoring = [];
 var p2scoring = [];
 var p1scoreChange = 0;
-
+setTimeout(function() {openningScreen();}, 2000);
 var altTurn = function() {
   if (turnNum % 2 ===0) {
     mark = "X";
@@ -15,16 +15,30 @@ var altTurn = function() {
     mark = "O";
   }
     turnNum += 1;
+
   };
 
 function TicTacController($scope) {
   $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
-  gameTimer(40);
+  gameTimer(42);
 
+  var gameOver = function() {
+    var box = $scope.rows;
+      if ((box[0][5] == "X" || box[0][5] == "O") && (box[0][6] == "X" || box[0][6] == "O") && (box[0][7] == "X" || box[0][7] == "O") && (box[1][5] == "X" || box[1][5] == "O") && (box[1][6] == "X" || box[1][6] == "O") && (box[1][7] == "X" || box[1][7] == "O") && (box[2][5] == "X" || box[2][5] == "O") && (box[2][6] == "X" || box[2][6] == "O") && (box[2][7] == "X" || box[2][7] == "O")) {
+      console.log("gameover");
+      setTimeout(function() {determineWinner();}, 2000);
+      
+
+      
+  }
+  
+};
+  
 
 // checkForScore uses a loop that will check each possible score
   var checkForScore = function() {
     baseBox = $scope.rows;
+    gameOver();
 
     
     var r1 = 0; var r2 = 1; var r3 = 2;
@@ -135,11 +149,10 @@ function TicTacController($scope) {
 
 
   $scope.makeMove = function(r, c){
-    // console.log($scope);
-    // console.log("box later: " + $scope.rows);
+ 
     
     cell = $scope.rows[r][c];
-    // console.log($scope.rows[c]);
+    
     if (cell != "X" && cell != "O") {
       altTurn();
       $scope.rows[r][c] = mark;
@@ -193,8 +206,12 @@ function fairScoreTracker1(scoreId) {
   }
   if(!isThere) {
     p1scoring.push(p1scoreId);
-    scorePopup ('pointp1');
+    scorePopup('pointp1');
     popupReset('pointp1');
+    p1scoreBoxPop('ScorePlayer1');
+    blinkId('ScorePlayer1');
+    p1BoxPopReset('ScorePlayer1');
+    p1boardScore('boardContainer');
   }
 
 }
@@ -208,8 +225,12 @@ function fairScoreTracker2(scoreId) {
   }
   if(!isThere) {
     p2scoring.push(p2scoreId);
-    scorePopup ('pointp2');
+    scorePopup('pointp2');
     popupReset('pointp2');
+    blinkId('ScorePlayer1');
+    p2scoreBoxPop('ScorePlayer2');
+    p2BoxPopReset('ScorePlayer2');
+    p2boardScore('boardContainer');
   }
 }
 function scorePopup (elementId) {
@@ -218,4 +239,71 @@ function scorePopup (elementId) {
 function popupReset(elementId) {
     setTimeout(function() {document.getElementById(elementId).style.display="none";}, 2000);
 }
+function p1scoreBoxPop (elementId) {
+  document.getElementById(elementId).style.background="rgba(97,37,106,.6)";
+}
+function p1BoxPopReset (elementId) {
+    setTimeout(function() {document.getElementById(elementId).style.background="black";}, 1000);
+}
+function p2scoreBoxPop (elementId) {
+  document.getElementById(elementId).style.background="rgba(0,165,204,.6)";
+}
+function p2BoxPopReset (elementId) {
+    setTimeout(function() {document.getElementById(elementId).style.background="black";}, 1000);
+}
+function p1boardScore (elementId) {
+  document.getElementById(elementId).style.backgroundColor="rgba(97, 21, 106, .5)";
+  setTimeout(function() {document.getElementById(elementId).style.backgroundColor="black";}, 200);
+}
+function p2boardScore (elementId) {
+  document.getElementById(elementId).style.backgroundColor="rgba(0, 165, 204, .5)";
+  setTimeout(function() {document.getElementById(elementId).style.backgroundColor="black";}, 200);
+}
+var cnt = 0;
+function blinkId(id) {
+  while (cnt < 8) {
+    var eye = document.getElementById(id);
+    if(eye.style.visibility=='hidden') {
+      eye.style.visibility='visible';
+    } else {
+      eye.style.visibility='hidden';
+    }
+      setTimeout("blinkId('"+id+"')",100);
+      cnt += 1;
+    return true;
+  }
+}
+var determineWinner = function () {
+    if(p1scoring.length > p2scoring.length) {
+      setTimeout(function() {winningScreen1();}, 1200);
+    }
+    else if(p2scoring.length > p1scoring.length) {
+      setTimeout(function() {winningScreen2();}, 1200);
+    }
+    else {
+      setTimeout(function() {tieScreen();}, 1200);
+    }
+  };
+  var winningScreen1 = function () {
+    document.getElementById("winScreen1").style.display="block";
+    document.getElementById("winText1").style.display="inline-block";
 
+  };
+  var winningScreen2 = function () {
+    document.getElementById("winScreen2").style.display="block";
+    document.getElementById("winText2").style.display="inline-block";
+
+  };
+  var tieScreen = function () {
+    document.getElementById("tieScreen").style.display="block";
+    document.getElementById("tieText").style.display="inline-block";
+
+  };
+  var openningScreen = function () {
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("startText").style.display="none";
+
+  };
+// var clearGame = function () {
+
+// }

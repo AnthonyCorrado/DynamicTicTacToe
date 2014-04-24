@@ -19,22 +19,38 @@
 		<p id="pointp1">Player 1 Scores!</p>
 		<p id="pointp2">Player 2 Scores!</p>
 	</div>
+
 	<div class="leftLayer">
 		{{point1}}
 	</div>
 
 	<div class="rightLayer">
 	</div>
+	<div id="winScreen1">
+		<h1 id="winText1">PLAYER 1 WINS THE GAME</h1>
+	</div>
+	<div id="winScreen2">
+		<h1 id="winText2">PLAYER 2 WINS THE GAME</h1>
+	</div>
+	<div id="tieScreen">
+		<h1 id="tieText">NEITHER PLAYER HAS WON</h1>
+	</div>
+	<div id="startScreen">
+		<h1 id="startText">  PLAYERS GET READY  </h1>
+	</div>
+
+
 
 		
 		<h1 id="counter_text"></h1>
 	<div id="boardContainer">
 		<div id="container" class="row2" x-ng-repeat="r in rows track by $index">
-			<div class="col" x-ng-repeat="col in r track by $index" x-ng-click="makeMove($parent.$index, $index);">
+			<div id="squares" class="col" x-ng-repeat="col in r track by $index" x-ng-click="makeMove($parent.$index, $index);" x-ng-click="boxChange();">
 				{{ col }}
 			</div>	
 		</div>
 	</div>
+	
 
 	
 </body>
