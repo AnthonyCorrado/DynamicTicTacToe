@@ -6,20 +6,16 @@ var p2scoreId = 0;
 var p1scoring = [];
 var p2scoring = [];
 var p1scoreChange = 0;
+var gameCount = 0;
+
+// while (gameCount === 0) {
 setTimeout(function() {openningScreen();}, 2000);
 
-// var waveTwo = function () {
-//   var elements = document.getElementsByClassName('col');
-//   for(var mm=0; mm<elements.length; mm++) {
-//     elements[mm].style.border='5px solid red';
-//     elements[mm].style['-webkit-box-shadow'] = "4px 4px 15px red";
-//   }
-// };
-var xBox = function () {
+var waveTwo = function () {
   var elements = document.getElementsByClassName('col');
   for(var mm=0; mm<elements.length; mm++) {
-    elements[mm].style.border='5px solid #61156A';
-    elements[mm].style['-webkit-box-shadow'] = "4px 4px 15px #61156A";
+    elements[mm].style.border='5px solid red';
+    elements[mm].style['-webkit-box-shadow'] = "4px 4px 15px red";
   }
 };
 
@@ -38,15 +34,17 @@ function TicTacController($scope) {
   $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
   gameTimer(42);
 
+  
+
   var gameOver = function() {
     var box = $scope.rows;
       if ((box[0][5] == "X" || box[0][5] == "O") && (box[0][6] == "X" || box[0][6] == "O") && (box[0][7] == "X" || box[0][7] == "O") && (box[1][5] == "X" || box[1][5] == "O") && (box[1][6] == "X" || box[1][6] == "O") && (box[1][7] == "X" || box[1][7] == "O") && (box[2][5] == "X" || box[2][5] == "O") && (box[2][6] == "X" || box[2][6] == "O") && (box[2][7] == "X" || box[2][7] == "O")) {
-      console.log("gameover");
-      setTimeout(function() {determineWinner();}, 2000);
-      
+        console.log("gameover");
+        setTimeout(function() {determineWinner();}, 2000);
+        setTimeout(function() {boardClear();}, 2000);
+        
 
-      
-  }
+      }
   
 };
   
@@ -172,9 +170,6 @@ function TicTacController($scope) {
     if (cell != "X" && cell != "O") {
       altTurn();
       $scope.rows[r][c] = mark;
-      if (mark =="X"){
-        xBox();
-      }
     }
     else {
       alert('Hey!');
@@ -302,7 +297,10 @@ var determineWinner = function () {
     else {
       setTimeout(function() {tieScreen();}, 1200);
     }
-  };
+    setTimeout(function() {alert('Round 2');}, 3200);
+    setTimeout(function() {halftimeReset();}, 5000);
+
+};
   var winningScreen1 = function () {
     document.getElementById("winScreen1").style.display="block";
     document.getElementById("winText1").style.display="inline-block";
@@ -323,6 +321,16 @@ var determineWinner = function () {
     document.getElementById("startText").style.display="none";
 
   };
+  var halftimeScreen = function () {
+    document.getElementById("startScreen").style.display="inline-block";
+    document.getElementById("startText").style.display="inline-block";
+
+  };
+  var halftimeReset = function () {
+    halftimeScreen();
+    setTimeout(function() {openningScreen();}, 5000);
+    TicTacController($scope);
+ };
 
 
 
