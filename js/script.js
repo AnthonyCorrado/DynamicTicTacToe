@@ -7,6 +7,22 @@ var p1scoring = [];
 var p2scoring = [];
 var p1scoreChange = 0;
 setTimeout(function() {openningScreen();}, 2000);
+
+// var waveTwo = function () {
+//   var elements = document.getElementsByClassName('col');
+//   for(var mm=0; mm<elements.length; mm++) {
+//     elements[mm].style.border='5px solid red';
+//     elements[mm].style['-webkit-box-shadow'] = "4px 4px 15px red";
+//   }
+// };
+var xBox = function () {
+  var elements = document.getElementsByClassName('col');
+  for(var mm=0; mm<elements.length; mm++) {
+    elements[mm].style.border='5px solid #61156A';
+    elements[mm].style['-webkit-box-shadow'] = "4px 4px 15px #61156A";
+  }
+};
+
 var altTurn = function() {
   if (turnNum % 2 ===0) {
     mark = "X";
@@ -156,6 +172,9 @@ function TicTacController($scope) {
     if (cell != "X" && cell != "O") {
       altTurn();
       $scope.rows[r][c] = mark;
+      if (mark =="X"){
+        xBox();
+      }
     }
     else {
       alert('Hey!');
@@ -304,6 +323,14 @@ var determineWinner = function () {
     document.getElementById("startText").style.display="none";
 
   };
+
+
+
+
+
+  // var boardPulse = function ()
+  // document.getElementById("startScreen").style.display="none";
+
 // var clearGame = function () {
 
 // }
