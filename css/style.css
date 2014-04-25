@@ -72,6 +72,27 @@ div .col {
 	clear: both;
 	position: fixed;
 }
+#p1HalfLead {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(55,15,65,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#p1HalfLeadText {
+	font-size: 50px;
+	padding: 4px;
+	margin: 600px 0 0 320px;
+	text-shadow: 0 0 10px purple;
+	background: rgba(35,10,40,.8);
+	display: none;
+}
+
 #winScreen1 {
 	width: 2000px;
 	height: 1000px;
@@ -92,6 +113,27 @@ div .col {
 	background: rgba(35,10,40,.8);
 	display: none;
 }
+#p2HalfLead {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(0,165,204,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#p2HalfLeadText {
+	font-size: 50px;
+	padding: 4px;
+	margin: 600px 0 0 320px;
+	text-shadow: 0 0 10px blue;
+	background: rgba(0,70,100,.8);
+	display: none;
+}
+
 #winScreen2 {
 	width: 2000px;
 	height: 1000px;
@@ -143,8 +185,9 @@ div .col {
 	background-color: rgba(150,20,20,.3);
 	clear: both;
 	position: fixed;
-	display: block; 
+	display: inline-block; 
 }
+
 #startText {
 	font-size: 50px;
 	padding: 4px;
@@ -153,6 +196,28 @@ div .col {
 	display: inline-block;
 	background: rgba(40,0,0,.5);
 	
+}
+#halftimeScreen {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(70,20,20,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#halftimeText {
+	width: 1350px;
+	font-size: 50px;
+	padding: 4px;
+	margin-top: 650px;
+	text-align: center;
+	text-shadow: 0 0 10px red;
+	background: rgba(80,20,20,.7);
+	display: none;
 }
 /*#topContainer {
 	max-width: 70%;
@@ -194,6 +259,14 @@ div .col {
 	font-size: 30px;
 	text-align: center;
 	padding: 2px;
+}
+#blockTimer {
+	width: 200px;
+	height: 90px;
+	position: fixed;
+	margin: -10px 0 0 570px;
+	background-color: black;
+	display: none;
 }
 #pointp1 {
 	width: 300px;

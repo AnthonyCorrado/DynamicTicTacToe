@@ -30,7 +30,7 @@ var altTurn = function() {
 
   };
 
-function TicTacController($scope) {
+function TicTacController($scope, $timeout) {
   $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
   gameTimer(42);
 
@@ -40,8 +40,13 @@ function TicTacController($scope) {
     var box = $scope.rows;
       if ((box[0][5] == "X" || box[0][5] == "O") && (box[0][6] == "X" || box[0][6] == "O") && (box[0][7] == "X" || box[0][7] == "O") && (box[1][5] == "X" || box[1][5] == "O") && (box[1][6] == "X" || box[1][6] == "O") && (box[1][7] == "X" || box[1][7] == "O") && (box[2][5] == "X" || box[2][5] == "O") && (box[2][6] == "X" || box[2][6] == "O") && (box[2][7] == "X" || box[2][7] == "O")) {
         console.log("gameover");
-        setTimeout(function() {determineWinner();}, 2000);
-        setTimeout(function() {boardClear();}, 2000);
+        
+        setTimeout(function() {halftimeSummary();}, 2000);
+        $timeout(gameReset, 5000);
+
+        // setTimeout(function() {boardClear();}, 2000);
+        // setTimeout(function() {boardClear();}, 2000);
+        
         
 
       }
@@ -158,7 +163,10 @@ function TicTacController($scope) {
 
    
 };
-
+  var gameReset = function() {
+    $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
+   
+  };
 
 
 
@@ -170,10 +178,6 @@ function TicTacController($scope) {
     if (cell != "X" && cell != "O") {
       altTurn();
       $scope.rows[r][c] = mark;
-    }
-    else {
-      alert('Hey!');
-      
     }
     checkForScore();
   };
@@ -209,6 +213,38 @@ for (i=num;i>-1;i--) {
     }(i));
 }
 }
+
+function gameTimerRndTwo(num) {
+
+var counter = 0;
+for (i=num;i>-1;i--) {
+
+(function(i) {
+    window.setTimeout(function(counter)
+    {
+      var therows = document.getElementsByClassName("row2");
+          if (i < 31 && i > 9 && i % 5 === 0) {
+            for (var y = 0; y < therows.length; y++) {
+              
+              therows[y].style.marginLeft=moveBoard +"px";
+              console.log(y);
+            }
+            moveBoard = moveBoard + 126;
+    }
+    
+    else
+    {
+      console.log(i);
+      document.getElementById("counter_text").innerHTML = i.toString();
+      }
+      }, counter*1000);
+
+    counter += 1;
+    }(i));
+}
+}
+
+
 function fairScoreTracker1(scoreId) {
   isThere = false;
   for (item = 0; item < p1scoring.length; item++) {
@@ -287,29 +323,42 @@ function blinkId(id) {
     return true;
   }
 }
-var determineWinner = function () {
-    if(p1scoring.length > p2scoring.length) {
-      setTimeout(function() {winningScreen1();}, 1200);
-    }
-    else if(p2scoring.length > p1scoring.length) {
-      setTimeout(function() {winningScreen2();}, 1200);
-    }
-    else {
-      setTimeout(function() {tieScreen();}, 1200);
-    }
-    setTimeout(function() {alert('Round 2');}, 3200);
-    setTimeout(function() {halftimeReset();}, 5000);
+var halftimeSummary = function () {
+  halftimeScreen();
+  timerBlock();
+  gameTimerRndTwo(45);
+  setTimeout(function() {waveTwo();}, 6000);
+  if(p1scoring.length > p2scoring.length) {
+    setTimeout(function() {p1HalftimeLeadScreen();}, 3000);
+  }
+  else if(p2scoring.length > p1scoring.length) {
+    setTimeout(function() {p2HalftimeLeadScreen();}, 3000);
+  }
+  else {
+    setTimeout(function() {halftimeTieScreen();}, 3000);
+  }
+  
 
+};
+var determineWinner = function () {
+  if(p1scoring.length > p2scoring.length) {
+    setTimeout(function() {winningScreen1();}, 1200);
+  }
+  else if(p2scoring.length > p1scoring.length) {
+    setTimeout(function() {winningScreen2();}, 1200);
+  }
+  else {
+    setTimeout(function() {tieScreen();}, 1200);
+  }
+  
 };
   var winningScreen1 = function () {
     document.getElementById("winScreen1").style.display="block";
     document.getElementById("winText1").style.display="inline-block";
-
   };
   var winningScreen2 = function () {
     document.getElementById("winScreen2").style.display="block";
     document.getElementById("winText2").style.display="inline-block";
-
   };
   var tieScreen = function () {
     document.getElementById("tieScreen").style.display="block";
@@ -322,17 +371,33 @@ var determineWinner = function () {
 
   };
   var halftimeScreen = function () {
-    document.getElementById("startScreen").style.display="inline-block";
-    document.getElementById("startText").style.display="inline-block";
-
+    document.getElementById("halftimeScreen").style.display="inline-block";
+    document.getElementById("halftimeText").style.display="inline-block";
+    setTimeout(function() {document.getElementById("halftimeText").style.display="none";}, 3000);
+    setTimeout(function() {document.getElementById("halftimeScreen").style.display="none";}, 3000);
   };
   var halftimeReset = function () {
-    halftimeScreen();
-    setTimeout(function() {openningScreen();}, 5000);
-    TicTacController($scope);
+    setTimeout(function() {halftimeScreen();}, 2000);
  };
-
-
+  var p1HalftimeLeadScreen = function () {
+    document.getElementById("p1HalfLead").style.display="block";
+    document.getElementById("p1HalfLeadText").style.display="inline-block";
+    setTimeout(function() {document.getElementById("p1HalfLead").style.display="none";}, 4000);
+    setTimeout(function() {document.getElementById("p1HalfLeadText").style.display="none";}, 4000);
+  };
+  var p2HalftimeLeadScreen = function () {
+    document.getElementById("p2HalfLead").style.display="block";
+    document.getElementById("p2HalfLeadText").style.display="inline-block";
+    setTimeout(function() {document.getElementById("p2HalfLead").style.display="none";}, 4000);
+    setTimeout(function() {document.getElementById("p2HalfLeadText").style.display="none";}, 4000);
+  };
+  var timerBlock = function () {
+    document.getElementById("blockTimer").style.display="block";
+    setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 7000);
+  };
+  var secondHalf = function () {
+    gameTimerRound2(45);
+  }
 
 
 
