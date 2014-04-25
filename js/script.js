@@ -1,16 +1,17 @@
 var moveBoard = 360; // sets the initial position of board
-var moveBoard2 = -144;
-var moveBoard3 = 486;
+var moveBoard2 = -144; // sets the board on start of round 2
+var moveBoard3 = 486; // sets the board for switchback in round 2
 var turnNum = 0; // sets variable to determine if X or O gets placed
 var mark; //sets global variable for use in placing X or O to html
+// scoring and array sets for score tracking
 var p1scoreId = 0;
 var p2scoreId = 0;
 var p1scoring = [];
 var p2scoring = [];
 var p1scoreChange = 0;
-var gameCount = 0;
-var gameRound = 1;
 
+var gameRound = 1; // counter for halftime/end game screens
+var counter = 0; // counter used for main game timer
 // while (gameCount === 0) {
 setTimeout(function() {openningScreen();}, 2000);
 
@@ -37,6 +38,42 @@ function TicTacController($scope, $timeout) {
   $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
   gameTimer(44);
   timerBlockStart();
+
+  // var lastGame;
+  //     // Ask for all existing game info from firebase
+  //     ticTacRef.once('value', function(gamesSnapshot) {
+  //       // get the actual games data
+  //       var games = gamesSnapshot.val();
+  //       if(games == null)
+  //       {
+  //         // No games at all, so make a new game -- As if we're Areg
+  //         lastGame = ticTacRef.push( {waiting: true} );
+  //         playerNum = 1;
+  //       }
+  //       else  // I do have at least one game out there...
+  //       {
+  //         var keys = Object.keys(games);
+  //         var lastGameKey = keys[ keys.length - 1 ];
+  //         var lastGame = games[ lastGameKey ];
+  //         console.log("This person's game: " + lastGameKey);
+  //         if(lastGame.waiting)
+  //         {
+  //           // Currently someone is waiting -- Areg is there and we're Rocky
+  //           // Grab from Firebase its last game object
+  //           lastGame = ticTacRef.child(lastGameKey);
+  //           // Set a new game on this
+  //           lastGame.set( {waiting:false, playerTurn: 0, won: false, board: [0,0,0,0,0,0,0,0,0]} );
+  //           playerNum = 2;
+  //         }
+  //         else
+  //         {
+  //           // Make a new game -- As if we're Areg
+  //           lastGame = ticTacRef.push( {waiting: true} );
+  //           playerNum = 1;
+  //         }
+  //       }
+  //       // Attach the last game to what we're up to
+  //       $scope.game = $firebase(lastGame);
 
   
 
@@ -192,11 +229,11 @@ function TicTacController($scope, $timeout) {
     checkForScore();
   };
 }
-var endGame = 0;
+
 
 function gameTimer(num) {
 
-var counter = 0;
+
 for (i=num;i>-1;i--) {
 
 (function(i) {
@@ -348,9 +385,10 @@ function blinkId(id) {
 }
 var halftimeSummary = function () {
   halftimeScreen();
+  setTimeout(function() {waveTwoText();}, 6000);
   timerBlock();
-  gameTimerSecondHalf(22);
-  setTimeout(function() {gameTimerSecondHalfPt2(18);}, 22000);
+  gameTimerSecondHalf(24);
+  setTimeout(function() {gameTimerSecondHalfPt2(18);}, 24000);
   
   setTimeout(function() {waveTwo();}, 6000);
   if(p1scoring.length > p2scoring.length) {
@@ -409,28 +447,34 @@ var determineWinner = function () {
   var p1HalftimeLeadScreen = function () {
     document.getElementById("p1HalfLead").style.display="block";
     document.getElementById("p1HalfLeadText").style.display="inline-block";
-    setTimeout(function() {document.getElementById("p1HalfLead").style.display="none";}, 4000);
-    setTimeout(function() {document.getElementById("p1HalfLeadText").style.display="none";}, 4000);
+    setTimeout(function() {document.getElementById("p1HalfLead").style.display="none";}, 3000);
+    setTimeout(function() {document.getElementById("p1HalfLeadText").style.display="none";}, 3000);
   };
   var p2HalftimeLeadScreen = function () {
     document.getElementById("p2HalfLead").style.display="block";
     document.getElementById("p2HalfLeadText").style.display="inline-block";
-    setTimeout(function() {document.getElementById("p2HalfLead").style.display="none";}, 4000);
-    setTimeout(function() {document.getElementById("p2HalfLeadText").style.display="none";}, 4000);
+    setTimeout(function() {document.getElementById("p2HalfLead").style.display="none";}, 3000);
+    setTimeout(function() {document.getElementById("p2HalfLeadText").style.display="none";}, 3000);
   };
   var halftimeTieScreen = function () {
     document.getElementById("halfTie").style.display="block";
     document.getElementById("halfTieText").style.display="inline-block";
-    setTimeout(function() {document.getElementById("halfTie").style.display="none";}, 4000);
-    setTimeout(function() {document.getElementById("halfTieText").style.display="none";}, 4000);
+    setTimeout(function() {document.getElementById("halfTie").style.display="none";}, 3000);
+    setTimeout(function() {document.getElementById("halfTieText").style.display="none";}, 3000);
   };
   var timerBlock = function () {
     document.getElementById("blockTimer").style.display="block";
-    setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 7000);
+    setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 9000);
   };
   var timerBlockStart = function () {
     document.getElementById("blockTimer").style.display="block";
     setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 4000);
+  };
+  var waveTwoText = function () {
+    document.getElementById("halftimeScreen2").style.display="inline-block";
+    document.getElementById("waveTwoText").style.display="block";
+    setTimeout(function() {document.getElementById("waveTwoText").style.display="none";}, 2000);
+    setTimeout(function() {document.getElementById("halftimeScreen2").style.display="none";}, 2000);
   };
   // var secondHalf = function () {
   //   gameTimerRound2(45);

@@ -85,9 +85,11 @@ div .col {
 	display: none; 
 }
 #p1HalfLeadText {
+	width: 1350px;
 	font-size: 50px;
 	padding: 4px;
-	margin: 600px 0 0 320px;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px purple;
 	background: rgba(35,10,40,.8);
 	display: none;
@@ -106,9 +108,11 @@ div .col {
 	display: none; 
 }
 #winText1 {
+	width: 1350px;
 	font-size: 50px;
 	padding: 4px;
-	margin: 600px 0 0 320px;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px purple;
 	background: rgba(35,10,40,.8);
 	display: none;
@@ -126,9 +130,11 @@ div .col {
 	display: none; 
 }
 #p2HalfLeadText {
+	width: 1350px;
 	font-size: 50px;
 	padding: 4px;
-	margin: 600px 0 0 320px;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px blue;
 	background: rgba(0,70,100,.8);
 	display: none;
@@ -147,11 +153,13 @@ div .col {
 	display: none; 
 }
 #winText2 {
+	width: 1350px;
 	font-size: 50px;
 	padding: 4px;
-	margin: 600px 0 0 320px;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px blue;
-	background: rgba(0,70,100,.8);
+	background: rgba(0,70,100,.7);
 	display: none;
 }
 #tieScreen {
@@ -167,11 +175,12 @@ div .col {
 	display: none; 
 }
 #tieText {
+	width: 1350px;
 	font-size: 50px;
 	padding: 4px;
-	margin: 600px 0 0 320px;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px red;
-	display: inline-block;
 	background: rgba(40,0,0,.5);
 	display: none;
 }
@@ -191,22 +200,24 @@ div .col {
 #startText {
 	width: 1350px;
 	font-size: 50px;
-	text-align: center;
 	padding: 4px;
-	margin: 600px 0 0 0;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px red;
-	display: inline-block;
-	background: rgba(40,0,0,.8);	
+	background: rgba(80,20,20,.7);
+	-webkit-animation-duration: 1.5s;
+  	-webkit-animation-name: fade-in;
 }
 #startRnd1Text {
 	width: 1350px;
 	font-size: 50px;
-	text-align: center;
 	padding: 4px;
-	margin: 600px 0 0 -15px;
+	margin-top: 650px;
+	text-align: center;
 	text-shadow: 0 0 10px red;
-	display: inline-block;
-	background: rgba(40,0,0,.8);	
+	background: rgba(80,20,20,.7);
+	-webkit-animation-duration: 2s;
+  	-webkit-animation-name: fade-in;	
 }
 
 #halftimeScreen {
@@ -222,6 +233,28 @@ div .col {
 	display: none; 
 }
 #halftimeText {
+	width: 1350px;
+	font-size: 50px;
+	padding: 4px;
+	margin-top: 650px;
+	text-align: center;
+	text-shadow: 0 0 10px red;
+	background: rgba(80,20,20,.7);
+	display: none;
+}
+#halftimeScreen2 {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(70,20,20,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#waveTwoText {
 	width: 1350px;
 	font-size: 50px;
 	padding: 4px;
