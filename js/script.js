@@ -1,4 +1,6 @@
 var moveBoard = 360; // sets the initial position of board
+var moveBoard2 = -144;
+var moveBoard3 = 486;
 var turnNum = 0; // sets variable to determine if X or O gets placed
 var mark; //sets global variable for use in placing X or O to html
 var p1scoreId = 0;
@@ -7,6 +9,7 @@ var p1scoring = [];
 var p2scoring = [];
 var p1scoreChange = 0;
 var gameCount = 0;
+var gameRound = 1;
 
 // while (gameCount === 0) {
 setTimeout(function() {openningScreen();}, 2000);
@@ -33,6 +36,7 @@ var altTurn = function() {
 function TicTacController($scope, $timeout) {
   $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
   gameTimer(42);
+  timerBlockStart();
 
   
 
@@ -40,9 +44,15 @@ function TicTacController($scope, $timeout) {
     var box = $scope.rows;
       if ((box[0][5] == "X" || box[0][5] == "O") && (box[0][6] == "X" || box[0][6] == "O") && (box[0][7] == "X" || box[0][7] == "O") && (box[1][5] == "X" || box[1][5] == "O") && (box[1][6] == "X" || box[1][6] == "O") && (box[1][7] == "X" || box[1][7] == "O") && (box[2][5] == "X" || box[2][5] == "O") && (box[2][6] == "X" || box[2][6] == "O") && (box[2][7] == "X" || box[2][7] == "O")) {
         console.log("gameover");
-        
-        setTimeout(function() {halftimeSummary();}, 2000);
-        $timeout(gameReset, 5000);
+        if (gameRound === 1) {
+          $timeout(gameReset, 5000);
+          setTimeout(function() {halftimeSummary();}, 2000);
+          gameRound += 1;
+        }
+        else {
+          setTimeout(function() {determineWinner();}, 2000);
+          
+        }
 
         // setTimeout(function() {boardClear();}, 2000);
         // setTimeout(function() {boardClear();}, 2000);
@@ -199,22 +209,16 @@ for (i=num;i>-1;i--) {
               therows[y].style.marginLeft=moveBoard +"px";
               console.log(y);
             }
-            moveBoard = moveBoard - 126;
-    }
-    
-    else
-    {
-      console.log(i);
-      document.getElementById("counter_text").innerHTML = i.toString();
-      }
-      }, counter*1000);
-
+            moveBoard -= 126;
+          }
+          document.getElementById("counter_text").innerHTML = i.toString();
+    }, counter*1000);
     counter += 1;
     }(i));
 }
 }
 
-function gameTimerRndTwo(num) {
+function gameTimerSecondHalf(num) {
 
 var counter = 0;
 for (i=num;i>-1;i--) {
@@ -223,26 +227,45 @@ for (i=num;i>-1;i--) {
     window.setTimeout(function(counter)
     {
       var therows = document.getElementsByClassName("row2");
-          if (i < 31 && i > 9 && i % 5 === 0) {
+          if (i < 17 && i > 0 && i % 3 === 0) {
             for (var y = 0; y < therows.length; y++) {
               
-              therows[y].style.marginLeft=moveBoard +"px";
+              therows[y].style.marginLeft=moveBoard2 +"px";
               console.log(y);
             }
-            moveBoard = moveBoard + 126;
-    }
-    
-    else
-    {
-      console.log(i);
-      document.getElementById("counter_text").innerHTML = i.toString();
-      }
-      }, counter*1000);
-
+            moveBoard2 += 126;
+          }
+          document.getElementById("counter_text").innerHTML = i.toString();
+    }, counter*1000);
     counter += 1;
     }(i));
 }
 }
+function gameTimerSecondHalfPt2(num) {
+
+var counter = 0;
+for (w=num;w>-1;w--) {
+
+(function(w) {
+    window.setTimeout(function(counter)
+    {
+      var therows = document.getElementsByClassName("row2");
+          if (w < 19 && w > 0 && w % 3 === 0) {
+            for (var e = 0; e < therows.length; e++) {
+              
+              therows[e].style.marginLeft=moveBoard3 +"px";
+              console.log(e);
+            }
+            moveBoard3 -= 126;
+          }
+          document.getElementById("counter_text").innerHTML = w.toString();
+    }, counter*1000);
+    counter += 1;
+    }(w));
+}
+}
+
+
 
 
 function fairScoreTracker1(scoreId) {
@@ -326,7 +349,9 @@ function blinkId(id) {
 var halftimeSummary = function () {
   halftimeScreen();
   timerBlock();
-  gameTimerRndTwo(45);
+  gameTimerSecondHalf(22);
+  setTimeout(function() {gameTimerSecondHalfPt2(18);}, 22000);
+  
   setTimeout(function() {waveTwo();}, 6000);
   if(p1scoring.length > p2scoring.length) {
     setTimeout(function() {p1HalftimeLeadScreen();}, 3000);
@@ -391,13 +416,23 @@ var determineWinner = function () {
     setTimeout(function() {document.getElementById("p2HalfLead").style.display="none";}, 4000);
     setTimeout(function() {document.getElementById("p2HalfLeadText").style.display="none";}, 4000);
   };
+  var halftimeTieScreen = function () {
+    document.getElementById("halfTie").style.display="block";
+    document.getElementById("halfTieText").style.display="inline-block";
+    setTimeout(function() {document.getElementById("halfTie").style.display="none";}, 4000);
+    setTimeout(function() {document.getElementById("halfTieText").style.display="none";}, 4000);
+  };
   var timerBlock = function () {
     document.getElementById("blockTimer").style.display="block";
     setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 7000);
   };
-  var secondHalf = function () {
-    gameTimerRound2(45);
-  }
+  var timerBlockStart = function () {
+    document.getElementById("blockTimer").style.display="block";
+    setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 2000);
+  };
+  // var secondHalf = function () {
+  //   gameTimerRound2(45);
+  // }
 
 
 

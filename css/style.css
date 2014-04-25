@@ -219,6 +219,29 @@ div .col {
 	background: rgba(80,20,20,.7);
 	display: none;
 }
+
+#halfTie {
+	width: 2000px;
+	height: 1000px;
+	margin: -400 0 0 0;
+	z-index: 1000;
+	float: left;
+	/*background-color: rgba(180, 180, 80, 1);*/
+	background-color: rgba(70,20,20,.5);
+	clear: both;
+	position: fixed;
+	display: none; 
+}
+#halfTieText {
+	width: 1350px;
+	font-size: 50px;
+	padding: 4px;
+	margin-top: 650px;
+	text-align: center;
+	text-shadow: 0 0 10px red;
+	background: rgba(80,20,20,.7);
+	display: none;
+}
 /*#topContainer {
 	max-width: 70%;
 	border:	1px dotted white;
