@@ -35,7 +35,7 @@ var altTurn = function() {
 
 function TicTacController($scope, $timeout) {
   $scope.rows = [['','','','','','','',''],['','','','','','','',''],['','','','','','','','']];
-  gameTimer(42);
+  gameTimer(44);
   timerBlockStart();
 
   
@@ -391,8 +391,10 @@ var determineWinner = function () {
 
   };
   var openningScreen = function () {
-    document.getElementById("startScreen").style.display="none";
+    setTimeout(function() {document.getElementById("startScreen").style.display="none";}, 2000);
     document.getElementById("startText").style.display="none";
+    document.getElementById("startRnd1Text").style.display="inline-block";
+    setTimeout(function() {document.getElementById("startRnd1Text").style.display="none";}, 2000);
 
   };
   var halftimeScreen = function () {
@@ -428,7 +430,7 @@ var determineWinner = function () {
   };
   var timerBlockStart = function () {
     document.getElementById("blockTimer").style.display="block";
-    setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 2000);
+    setTimeout(function() {document.getElementById("blockTimer").style.display="none";}, 4000);
   };
   // var secondHalf = function () {
   //   gameTimerRound2(45);

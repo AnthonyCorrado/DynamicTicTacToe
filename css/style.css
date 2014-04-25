@@ -189,14 +189,26 @@ div .col {
 }
 
 #startText {
+	width: 1350px;
 	font-size: 50px;
+	text-align: center;
 	padding: 4px;
-	margin: 600px 0 0 350px;
+	margin: 600px 0 0 0;
 	text-shadow: 0 0 10px red;
 	display: inline-block;
-	background: rgba(40,0,0,.5);
-	
+	background: rgba(40,0,0,.8);	
 }
+#startRnd1Text {
+	width: 1350px;
+	font-size: 50px;
+	text-align: center;
+	padding: 4px;
+	margin: 600px 0 0 -15px;
+	text-shadow: 0 0 10px red;
+	display: inline-block;
+	background: rgba(40,0,0,.8);	
+}
+
 #halftimeScreen {
 	width: 2000px;
 	height: 1000px;
