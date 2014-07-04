@@ -17,3 +17,11 @@ When the final nine blocks are filled in the game is over. The score is tallied 
   * Adding a player shot clock to prevent stalling. Perhaps a five second limit before the turn is forfeited.
   * Deploying to Firebase for online play against friends. 
   * Record/stat keeping system.
+
+## What Was Used:
+
+Most of the heavy lifting was JavaScript and Angular. Sci-fi styling courtesy of CSS. A version of this TTT includes some code to allow deployment on Firebase. This is still a work in progress.
+
+## Contact:
+If you have any feedback, comments, or questions, please reach out! Contact me through Github or via Gmail. The choice I leave up to you. Thanks in advance! 
+Anthony - anthonymcorrado@gmail.com
