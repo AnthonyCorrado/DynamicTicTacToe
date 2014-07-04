@@ -4,7 +4,7 @@ Let's be honest, TicTacToe is not much fun once you've reached the age of...roug
 
 ## Game Play
 
-The match is based on a game clock. After a set period of time the game board gradually begins to move. Players alternate turns placing their marker in the 9-block active grid in attempts to score 3-in-a-row. Unlike traditional TTT, the game does not end after a score. The players receive a point and the game continues. Points can be score regardless of whether all three squares are active at the time. 
+The match is based on a game clock. The board consists of 24 playable squares, with only nine active at a time. After a set period of time the game board gradually begins to move. Players alternate turns placing their marker in the 9-block active grid in attempts to score 3-in-a-row. Unlike traditional TTT, the game does not end after a score. The player receives a point and the game continues. Points can be score regardless of whether all three squares are active at the time. 
 
 The match consists of two rounds. The first moves at a slower pace from left to right with the focus being on deeper strategy. The second round increases the speed and the board now goes 'down and back'. Quick thinking is the requisite for round 2. 
 
@@ -14,6 +14,6 @@ When the final nine blocks are filled in the game is over. The score is tallied 
 
 ## Future Additions
 
--Adding a player shot clock to prevent stalling. Perhaps a five second limit before the turn is forfeited.
--Deploying to Firebase for online play against friends. 
--Record/stat keeping system.
+  * Adding a player shot clock to prevent stalling. Perhaps a five second limit before the turn is forfeited.
+  * Deploying to Firebase for online play against friends. 
+  * Record/stat keeping system.
