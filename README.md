@@ -1,6 +1,6 @@
 # The Rebirth of TicTacToe!
 
-Let's be honest, TicTacToe is not much fun once you've reached the age of...roughly 10. After that, nearly every game ends in a tie or leads to utter embarrasment from a silly mistake. My goal was to create a fast-paced, quick thinking tactical version of TTT that is a challenge for all ages. In other words, make TTT fun again!.
+Let's be honest, TicTacToe is not much fun once you've reached the age of...roughly 10. After that, nearly every game ends in a tie or leads to utter embarrasment from a silly mistake. My goal was to create a fast-paced, quick thinking tactical version of TTT that is a challenge for all ages. In other words, make TTT fun again!. Check it out here: http://tictactoe2000.herokuapp.com
 
 ## Game Play
 
