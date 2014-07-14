@@ -1,74 +1,68 @@
 <html>
-<head>
-	<title>TicTacToe</title>
-	<link href='http://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
-	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
-	<script src="js/script.js"></script>
-</head>
-<body x-ng-app="" x-ng-controller="TicTacController">
-	<div id="topContainer">
-		<div id="p1Name">Player 1</div>
-		<div id="p2Name">Player 2</div>
-		<div id="ScorePlayer1">
-		{{p1Score}}</div>
+	<head>
+		<title>TicTacToe</title>
+		<link href='http://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+		<script src="js/script.js"></script>
+	</head>
 
-		<div id="ScorePlayer2">{{p2Score}}</div>
-		<h1 id="title">Tic Tac Toe</h1>
-		<p id="pointp1">Player 1 Scores!</p>
-		<p id="pointp2">Player 2 Scores!</p>
-	</div>
+	<body x-ng-app="" x-ng-controller="TicTacController">
+		<div id="topContainer">
+			<div id="p1Name">Player 1</div>
+			<div id="p2Name">Player 2</div>
+			<div id="ScorePlayer1">{{p1Score}}</div>
 
-	<div class="leftLayer">
-		{{point1}}
-	</div>
-
-	<div class="rightLayer">
-	</div>
-	<div id="winScreen1">
-		<h1 id="winText1">PLAYER 1 WINS THE GAME</h1>
-	</div>
-	<div id="winScreen2">
-		<h1 id="winText2">PLAYER 2 WINS THE GAME</h1>
-	</div>
-	<div id="tieScreen">
-		<h1 id="tieText">NEITHER PLAYER HAS WON</h1>
-	</div>
-	<div id="startScreen">
-		<h1 id="startText">  PLAYERS GET READY  </h1>
-		<h1 id="startRnd1Text">  WAVE 1: LOGIC  </h1>
-	</div>
-   <div id="halftimeScreen">
-		<h1 id="halftimeText">  HALFTIME  </h1>
-	</div>
-	<div id="p1HalfLead">
-		<h1 id="p1HalfLeadText">ADVANTAGE: PLAYER 1</h1>
-	</div>
-	<div id="p2HalfLead">
-		<h1 id="p2HalfLeadText">ADVANTAGE: PLAYER 2</h1>
-	</div>
-	<div id="halfTie">
-		<h1 id="halfTieText">PLAYERS ARE TIED</h1>
-	</div>
-	<div id="halftimeScreen2">
-		<h1 id="waveTwoText">  WAVE 2: REFLEX  </h1>
-	</div>
-	<h1 id="blockTimer"></h1>
-
-		
-		<h1 id="counter_text"></h1>
-	<div id="boardContainer">
-		<div id="container" class="row2" x-ng-repeat="r in rows track by $index">
-			<div id="squares" class="col" x-ng-repeat="col in r track by $index" x-ng-click="makeMove($parent.$index, $index);" x-ng-click="boxChange();">
-				{{ col }}
-			</div>	
+			<div id="ScorePlayer2">{{p2Score}}</div>
+			<h1 id="title">Tic Tac Toe</h1>
+			<p id="pointp1">Player 1 Scores!</p>
+			<p id="pointp2">Player 2 Scores!</p>
 		</div>
-	</div>
-	
 
-	
-</body>
+		<div class="leftLayer">{{point1}}</div>
+		<div class="rightLayer"></div>
+		<div id="winScreen1">
+			<h1 id="winText1">PLAYER 1 WINS THE GAME</h1>
+		</div>
+		<div id="winScreen2">
+			<h1 id="winText2">PLAYER 2 WINS THE GAME</h1>
+		</div>
+		<div id="tieScreen">
+			<h1 id="tieText">NEITHER PLAYER HAS WON</h1>
+		</div>
+		<div id="startScreen">
+			<h1 id="startText">  PLAYERS GET READY  </h1>
+			<h1 id="startRnd1Text">  WAVE 1: LOGIC  </h1>
+		</div>
+	  <div id="halftimeScreen">
+			<h1 id="halftimeText">  HALFTIME  </h1>
+		</div>
+		<div id="p1HalfLead">
+			<h1 id="p1HalfLeadText">ADVANTAGE: PLAYER 1</h1>
+		</div>
+		<div id="p2HalfLead">
+			<h1 id="p2HalfLeadText">ADVANTAGE: PLAYER 2</h1>
+		</div>
+		<div id="halfTie">
+			<h1 id="halfTieText">PLAYERS ARE TIED</h1>
+		</div>
+		<div id="halftimeScreen2">
+			<h1 id="waveTwoText">  WAVE 2: REFLEX  </h1>
+		</div>
+
+		<h1 id="blockTimer"></h1>
+		<h1 id="counter_text"></h1>
+		
+			<div id="boardContainer">
+				<div id="container" class="row2" x-ng-repeat="r in rows track by $index">
+					<div id="squares" class="col" x-ng-repeat="col in r track by $index" x-ng-click="makeMove($parent.$index, $index);" x-ng-click="boxChange();">
+						{{ col }}
+					</div>	
+				</div>
+			</div>
+		
+	</body>
 </html>
